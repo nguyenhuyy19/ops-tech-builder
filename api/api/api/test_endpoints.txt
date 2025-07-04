@@ -1,0 +1,10 @@
+Test the POST Endpoints 
+
+Use: Curl -> by Terminal 
+
+Scripts: 
+"
+curl -X POST http://localhost:5000/summarize \
+  -H "Content-Type: application/json" \
+  -d '{"text": "OpenAI builds powerful language models.", "provider": "openai"}'
+"

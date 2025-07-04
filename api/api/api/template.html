@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>LLM Summarizer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+        }
+        textarea {
+            width: 100%;
+            height: 150px;
+        }
+        select, button {
+            margin-top: 10px;
+        }
+        .output {
+            margin-top: 20px;
+            background-color: #f4f4f4;
+            padding: 10px;
+            border-left: 4px solid #007BFF;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>LLM Text Summarizer</h2>
+
+    <form id="summarize-form">
+        <label for="text">Input Text:</label><br>
+        <textarea id="text" name="text" required></textarea><br>
+
+        <label for="provider">Choose Provider:</label><br>
+        <select id="provider" name="provider">
+            <option value="openai">OpenAI</option>
+            <option value="claude">Claude (mocked)</option>
+        </select><br>
+
+        <button type="submit">Summarize</button>
+    </form>
+
+    <div id="result" class="output" style="display: none;"></div>
+
+    <script>
+        document.getElementById('summarize-form').addEventListener('submit', async function (e) {
+            e.preventDefault();
+
+            const text = document.getElementById('text').value.trim();
+            const provider = document.getElementById('provider').value;
+
+            const response = await fetch('/summarize', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ text, provider })
+            });
+
+            const data = await response.json();
+
+            const resultDiv = document.getElementById('result');
+            if (response.ok) {
+                resultDiv.innerHTML = `<strong>Summary:</strong><br>${data.summary}`;
+            } else {
+                resultDiv.innerHTML = `<strong>Error:</strong> ${data.error || 'Unknown error'}`;
+            }
+
+            resultDiv.style.display = 'block';
+        });
+    </script>
+
+</body>
+</html>
+

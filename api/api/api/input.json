@@ -1,0 +1,7 @@
+{
+  "text": "Input text here",
+  "provider": "openai",               
+  "summary_style": "detailed",        
+  "output_format": "paragraph",       
+  "max_length": 150                   
+}

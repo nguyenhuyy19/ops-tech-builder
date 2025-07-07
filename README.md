@@ -1,26 +1,2 @@
 ﻿# ops_tech_builder_submit
- ﻿# ops_tech_builder_submit
-Here is a summary of some structures for my Ops_tech_builder
 
-Part 1: A directory structure drawing workflow of Code <>
-llm_API_endpoint: /summarize
-├── app.py (enhanced version)
-├── templates/
-│   └── index.html
-├── requirements.txt
-├── .env
-└── README.md
-
-Part 2: This is structure drawing using the same style for your Python script project
-csv_parser/
-├── main.py               
-├── processor.py           
-├── utils/
-│   └── json_writer.py     
-├── sample_data/
-│   └── P_log.csv          
-├── output/
-│   └── output_result.json           # Output JSON result
-├── requirements.txt       
-├── .env                   
-└── README.md    
